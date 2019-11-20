@@ -25,16 +25,16 @@ for line in lines:
 #C *= 1e12 #Making this shit in pF bro
 OneOverCSquared = 1/(C**2)
 
-slope, intercept, r_value, p_value, std_err = stats.linregress(abs(V), OneOverCSquared)
+slope, intercept, r_value, p_value, std_err = stats.linregress(V, OneOverCSquared)
 print("slope: %f    intercept: %f" % (slope, intercept))
 
 
 #Plotting read data
 plt.axhline(y=0, color = "black", linestyle = "--")
-plt.plot(range(-1,19), intercept + slope*range(-1,19), color = 'r', label='Fitted line, slope = %g'%slope, linestyle = "--")
-plt.scatter(abs(V),OneOverCSquared, label = "Inverse squared capacitance", color = 'g')
-plt.plot(abs(V),OneOverCSquared, linewidth=1)
-plt.scatter(-0.6, 0, color = "r", label = r"intersection in $V = -0.6$V")
+plt.plot(range(-19,1), intercept + slope*range(-19,1), color = 'r', label='Fitted line, slope = %g'%slope, linestyle = "--")
+plt.scatter(V,OneOverCSquared, label = "Inverse squared capacitance", color = 'g')
+plt.plot(V,OneOverCSquared, linewidth=1)
+plt.scatter(0.6, 0, color = "r", label = r"intersection in $V = 0.6$V")
 
 
 plt.ylabel(r"Inverse capacitance squared, $\frac{1}{C^2}$, $[\frac{1}{(F)^2}]$")
